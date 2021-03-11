@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
+    .frame{
+        display: flex;
+        width: 700Px;
+        height: 400px;
+        margin: 100px auto;
+        border: 1px solid black;
+    }
+    .frame > ul{
+        position: relative;
+        width: 800Px;
+        height: 400px;
+        transform-style: preserve-3d;
+        transition-duration: 0.8s;
+    }
+    .frame > ul >li{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .frame > ul >li:nth-child(1){
+        background: url("images/1.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: translateZ(200px);
+    }
+    .frame > ul >li:nth-child(2){
+        background: url("images/2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: rotateX(-90deg) translateZ(200px);
+    }
+    .frame > ul >li:nth-child(3){
+        background: url("images/3.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: rotateX(-180deg) translateZ(200px);
+    }
+    .frame > ul >li:nth-child(4){
+        background: url("images/4.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: rotateX(90deg) translateZ(200px);
+    }
+    .frame > ul:nth-child(1) > li{
+        background-position: 0px 0;
+    }
+    .frame > ul:nth-child(2) > li{
+        background-position: -140px 0;
+    }
+    .frame > ul:nth-child(3) > li{
+        background-position: -280px 0;
+    }
+    .frame > ul:nth-child(4) > li{
+        background-position: -420px 0;
+    }
+    .frame > ul:nth-child(5) > li{
+        background-position: -560px 0;
+    }
+}
+</style>
+<body>
+    <div class="frame">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        let frame=document.querySelector(".frame")
+        let uls=frame.children;
+        
+        run()
+        var i=4,index=0;
+        function run(){
+            setInterval(()=>{
+                index++
+                spin()
+            },5000)
+        }
+        function spin(){
+            var i=5;
+            var timer=setInterval(()=>{
+                i--
+                uls[i].style="transform: rotateX("+(index*90)+"deg)"
+                if(i==0){
+                    clearTimeout(timer)
+                }
+            },200)
+        }
+    </script>
+</body>
+</html>

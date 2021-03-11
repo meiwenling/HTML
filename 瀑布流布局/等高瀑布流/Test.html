@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .container{
+        width: 900px;
+        margin: auto;
+        padding: 10px 10px 0 0;
+        border: 1px solid black;
+    }
+    .container >ul{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .container >ul >li{
+        float: left;
+        flex-grow: 1;
+        height: 200px;
+        margin: 0 0 10px 10px;
+    }
+    .container >ul >li >img{
+        height: 100%;
+        min-width: 100%;
+        object-fit: cover;
+    }
+    .container >ul::after{
+        content: "";
+        flex-grow: 10;
+    }
+</style>
+<body>
+    <div class="container">
+        <ul></ul>
+    </div>
+    <script>
+        const num=20
+        var container=document.querySelector(".container >ul")
+        const imgBox=getImages()
+        for(let i=0;i<imgBox.length;i++){
+            container.appendChild(imgBox[i])
+        }
+        getImages()
+        function getImages(){
+            var arr=new Array()
+            for(let i=0;i<num;i++){
+                let li=document.createElement("li")
+                let img="<img src=\"images/"+(i+1)+".jpg\">"
+                li.innerHTML=img
+                arr.push(li)
+            }
+            return arr
+        }
+    </script>
+</body>
+</html>

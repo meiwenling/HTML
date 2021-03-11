@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .container{
+        width: 950px;
+        padding: 10px 0 10px 0;
+        margin: auto;
+        border: 1px solid black;
+    }
+    .container >ul{
+        float: left;
+        width: 225px;
+        margin-left: 10px;
+    }
+    .container::after{
+        content: "";
+        clear: both;
+        display: block;
+    }
+    .container >ul >li{
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 15px;
+    }
+    .container >ul >li >img{
+        width: 100%;
+        object-fit: fill;
+        border-radius: 15px;
+    }
+</style>
+<body>
+    <div class="container">
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+    </div>  
+    <script>
+        const imgNum=55
+        var container=document.querySelector(".container")
+        var ul=document.querySelectorAll(".container >ul")
+        const imgBox=getImages()
+        init()
+        function init(){
+            for(let i=0;i<imgNum;i++){
+                if(i<ul.length){
+                    ul[i].appendChild(imgBox[i])
+                }else{
+                    setTimeout(()=>{
+                        let obj=ul[0]
+                        for(let j=0;j<ul.length;j++){
+                            if(obj.clientHeight>ul[j].clientHeight){
+                                obj=ul[j]
+                            }
+                        }
+                        obj.appendChild(imgBox[i])
+                    },100)
+                }
+            }
+        }   
+        
+        function getImages(){
+            let arr=new Array()
+            for(let i=0;i<imgNum;i++){
+                let imgLI=document.createElement("li")
+                const height=Math.round(Math.random()*225)+200
+                //console.log(height)
+                let img="<img src=\"images/"+(i+1)+".jpg\">"
+                imgLI.innerHTML=img
+                arr[i]=imgLI
+            }
+            return arr
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/iconfont.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+    .outer{
+        margin: 100px 50px;
+    }
+    .outer >ul{
+        width: 200px;
+    }
+    .outer ul >li{
+        border-bottom: 0.1px solid white;
+    }
+    .outer ul >li >a{
+        display: block;
+        padding: 14px 20px;
+        background: #587a9d;
+        color: seashell;
+    }
+    .inner{
+        transition: 0.4s;
+        background: #333;
+        overflow: hidden;
+        height: 0;    
+    }
+    .inner >a{
+        display: block;
+        padding: 10px 30px;
+        font-size: 12px;
+        color: white;
+        transition: 0.1s;
+    }
+    
+    .inner >a:hover{
+        background: grey;
+    }
+    .inner >a:active{
+        background: hotpink;
+    }
+</style>
+<body>
+    <div class="outer">
+        <ul>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="iconfont icon-weibiaoti2fuzhi12"></span>
+                    我的
+                </a>
+                <div class="inner">
+                    <a href="javascript:void(0)">发布</a>
+                    <a href="javascript:void(0)">资料</a>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="iconfont icon-youxiang"></span>
+                    邮箱
+                </a>
+                <div class="inner">
+                    <a href="javascript:void(0)">写邮件</a>
+                    <a href="javascript:void(0)">收件箱</a>
+                    <a href="javascript:void(0)">已发送</a>
+                    <a href="javascript:void(0)">回收箱</a>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="iconfont icon-buoumaotubiao06"></span>
+                    设置
+                </a>
+                <div class="inner">
+                    <a href="javascript:void(0)">密码</a>
+                    <a href="javascript:void(0)">语言</a>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="iconfont icon-zhuxiao"></span>
+                    注销
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        const li=document.querySelectorAll(".outer >ul >li")
+        const active_pointer=Array.from(li)
+        active_pointer.forEach(e=>{
+            if(e.children.length>1){
+                e.firstElementChild.onclick=function(){
+                    const inner=e.lastElementChild
+                    const len=inner.children.length
+                    const height=inner.firstElementChild.clientHeight
+                    //console.log(len)
+                    if(inner.clientHeight===0){
+                        e.lastElementChild.style.height=len*height+"px"
+                    }else{
+                        e.lastElementChild.style.height=0+"px"
+                    }
+                }
+            } 
+        })
+    </script>
+</body>
+</html>
